@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, stream_with_context, Response, session
 from llm.llm_mock import MockLLM
 from llm.llm_rag import RagLLM
@@ -5,13 +6,17 @@ from llm.llm_tinyllama import TinyLlamaLLM
 from llm.llm_llama3_1_8b import Llama3_1_8bLLM
 from utils.logger_setup import getlogger
 import uuid
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Initialize logger for the Flask app
 logger = getlogger("app")
 
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = "e4b7a6f9c3d2e1f0b5a697c4d8e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9"
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 # --- In-memory session-specific chat histories ---
 CHAT_SESSIONS = {}  # { session_id: [ {role, content}, ... ] }
