@@ -1,6 +1,6 @@
 # prettyAIChat
 
-A simple web frontend for interacting with AI APIs using Streamlit.
+A simple web frontend for interacting with AI APIs using FLASK.
 
 ## Setup
 
