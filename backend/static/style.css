@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light mode */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+body.light #chat {
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+}
+body.light button {
+    background: #eee;
+    color: #000;
+}
+
+/* Dark mode */
+body.dark {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+body.dark #chat {
+    background: #2a2a2a;
+    border: 1px solid #555;
+}
+body.dark button {
+    background: #444;
+    color: #fff;
+}
+
+#chat {
+    padding: 10px;
+    height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 75%;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+.user {
+    background-color: #dceeff;
+    color: #004080;
+    align-self: flex-end;
+}
+body.dark .user {
+    background-color: #264e7b;
+    color: #cce0ff;
+}
+
+.assistant {
+    background-color: #e6ffe6;
+    color: #1a5c1a;
+    align-self: flex-start;
+}
+body.dark .assistant {
+    background-color: #2d442d;
+    color: #b7e6b7;
+}
+
+body.light #subtitle {
+    color: #333;
+    font-size: 0.9em;
+    margin-top: -5px;
+}
+
+body.dark #subtitle {
+    color: #fff;
+    font-size: 0.9em;
+    margin-top: -5px;
+}
+
+
+.label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#darkmode-toggle {
+    float: right;
+}
+
+input#prompt {
+    width: 70%;
+    padding: 5px;
+}
+
+/* Typing indicator animation for AI Assistant */
+.message.assistant.typing .dots {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.message.assistant.typing .dots span {
+    display: inline-block;
+    animation: blink 1s infinite;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.message.assistant.typing .dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.message.assistant.typing .dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 20% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}

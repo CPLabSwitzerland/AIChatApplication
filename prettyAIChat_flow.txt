@@ -1,0 +1,58 @@
+        ┌─────────────────┐
+        │   User Browser  │
+        └───────┬─────────┘
+                │
+                ▼
+        ┌─────────────────┐
+        │  Cloudguard WAF │
+        │    with Lakera  │
+        └───────┬─────────┘
+                │
+      ┌─────────▼───────────┐
+      │  Frontend (JS/HTML) │
+      │  - Input message    │
+      │  - Send button      │
+      │  - LLM mode buttons │
+      │  - Clear chat       │
+      └─────────┬───────────┘
+                │
+        Sends HTTP requests
+                │
+                ▼
+        ┌───────────────┐
+        │ Flask Backend │
+        │   app.py      │
+        └───────────────┘
+                │
+  ┌─────────────┼─────────────┐
+  │             │             │
+  ▼             ▼             ▼
+ /send_message /set_mode    /clear_chat
+  │             │             │
+  │             │             │
+  ▼             ▼             ▼
+Append msg   Update LLM_MODE  Clear MESSAGES
+  │
+  ▼
+  ┌─────────────────────┐
+  │ get_llm(mode)       │
+  │ Returns LLM class   │
+  │ Mock/RAG/TinyLlama  │
+  └─────────┬───────────┘
+            │
+            ▼
+     ┌───────────────┐
+     │ LLM Class     │
+     │ .stream()     │
+     │ yields chunks │
+     └─────┬─────────┘
+           │
+           ▼
+  Stream chunks back to frontend
+           │
+           ▼
+  ┌─────────────────────┐
+  │ Frontend JS updates │
+  │ chat bubbles live   │
+  │ User / AI emojis    │
+  └─────────────────────┘

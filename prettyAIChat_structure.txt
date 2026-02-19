@@ -1,0 +1,28 @@
+prettyAIChat/
+
+├── backend/               
+│   ├── app.py            # Flask UI app
+│   │
+│   ├── templates/
+│   │   ├── app.html      # HTML structure
+│   │
+│   ├── static/
+│       ├─ style.css      # All CSS styles
+│       └─ app.js         # All JS functions
+│
+├── llm/
+│   ├── llm_rag.py         # Calls RAG Api at ai-rag-01
+│   ├── llm_tinylama.py    # Calls TinyLlama
+│   ├── llm_llama3_1_8b.py # Calls Llama3.1.8b
+│   ├── llm_mock.py        # Local mock mode locally
+│
+├── utils/
+│   ├── logger_setup.py    # Logger setup
+│
+├── logs/
+    ├── prettyAIChat.log
+    ├── prettyAIChat.log.1
+    ├── prettyAIChat.log.2
+    ├── prettyAIChat.log.3
+    ├── prettyAIChat.log.4
+    └── prettyAIChat.log.5

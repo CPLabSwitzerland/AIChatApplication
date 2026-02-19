@@ -1,0 +1,38 @@
+The following is worth to test once:
+
+
+def build_prompt(self, question: str) -> str:
+        """
+        Build a prompt for Llama 3.1_8b to answer a single question concisely.
+        """
+        return (
+            "<|im_start|>system\n"
+            "You are a concise assistant. "
+            "Answer in exactly one sentence. "
+            "Do not repeat the question. Do not add greetings or commentary. "
+            "Do not ask the user anything back.\n"
+            "<|im_end|>\n"
+            "<|im_start|>user\n"
+            f"Question: {question}\n"
+            "<|im_end|>\n"
+            "<|im_start|>assistant\n"
+        )
+
+******************************************************************
+
+Originial Tinyllama prompt. But looks like the new one works better:
+
+return (
+            "\nYou are a helpful assistant.\n"
+            "Answer the following question in **one sentence only**.\n"
+            "Do not add extra text, do not repeat the question, and do not generate any new questions.\n\n"
+            f"Question: {question}\n"
+            "Answer:"
+        )
+
+********************************************************************
+
+
+Some interesting docu:
+
+https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1/

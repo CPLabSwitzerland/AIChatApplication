@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CP Lab AI Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="light">
+
+    <h1>
+        CP Lab AI Agent
+        <button id="darkmode-toggle">🌙 Dark Mode</button>
+    </h1>
+    <p id="subtitle">This is an AI agent protected by Cloudguard WAF with Lakera</p>
+    <button id="clear-chat">🧹 Clear Chat</button>
+
+    <h3>Select LLM Mode</h3>
+    <button class="mode-btn" data-mode="mock">Mock LLM</button>
+    <button class="mode-btn" data-mode="rag">Retrieval-Augmented Generation LLM</button>
+    <button class="mode-btn" data-mode="tinyllama">TinyLlama LLM</button>
+    <button class="mode-btn" data-mode="llama3_1_8b">Llama3.1-8b LLM</button>
+
+    <p>Current LLM mode: <span id="llm-mode">{{ llm_mode }}</span></p>
+
+    <div id="chat">
+        {% for msg in messages %}
+            {% if msg.role == "user" %}
+                <div class="message user">🧑 {{ msg.content }}</div>
+            {% else %}
+                <div class="message assistant">🤖 <span class="label">AI Assistant:</span> {{ msg.content }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <input type="text" id="prompt" placeholder="Type your message">
+    <button id="send-btn">Send</button>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
